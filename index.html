@@ -4,16 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>张辉的免费工具导航</title>
-<style>font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;background:#f7f5ef;color:#222}
+<style>
+body{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;background:#f7f5ef;color:#222}
 h1{font-size:24px} p.sub{color:#666}
 h2{font-size:18px;margin-top:28px;border-bottom:2px solid #e8b64c;padding-bottom:6px}
 .card{background:#fff;border-radius:12px;padding:14px 16px;margin:10px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .card a{font-size:17px;font-weight:700;color:#b8860b;text-decoration:none}
 .card p{margin:6px 0 0;color:#555;font-size:14px}
+.status{display:inline-block;font-size:12px;padding:2px 8px;border-radius:20px;margin-left:6px}
+.done{background:#e6f4ea;color:#137333}.doing{background:#fef7e0;color:#b06000}.wait{background:#e8f0fe;color:#174ea6}
 footer{color:#999;font-size:12px;margin-top:32px}
+#gate{position:fixed;inset:0;background:#f7f5ef;z-index:99;display:flex;align-items:flex-start;justify-content:flex-start;padding:40px 20px}
+#gate .box{background:#fff;border-radius:12px;padding:20px;width:300px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+#gate input{width:100%;box-sizing:border-box;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px;font-size:15px}
+#gate button{width:100%;padding:11px;background:#b8860b;color:#fff;border:0;border-radius:8px;font-size:16px}
+#gate .err{color:#c00;font-size:13px;min-height:18px}
+#gate .note{color:#999;font-size:12px;margin-top:10px}
+#main{display:none}
 </style>
 </head>
 <body>
+<div id="gate"><div class="box">
+<h2 style="margin-top:0">请登录</h2>
+<label>账号</label>
+<input id="u" value="liuzhangdehao@gmail.com">
+<label>密码</label>
+<input id="p" type="password" placeholder="请输入密码">
+<div class="err" id="err"></div>
+<button onclick="login()">登录</button>
+<p class="note">这是个简易门锁，不是银行级加密，页面里不要放密码、密钥这些敏感东西。</p>
+</div></div>
+
+<div id="main">
 <h1>🧲 张辉的免费工具导航</h1>
 <p class="sub">我自己在用的免费工具，都收在这里。跑在 Abasthan 免费档上。</p>
 
@@ -31,9 +53,47 @@ footer{color:#999;font-size:12px;margin-top:32px}
 <div class="card"><a href="https://x.com/onesi8xg" target="_blank" rel="noopener">我的 X @onesi8xg</a><p>免费薅羊毛 + 黄金行情，目标：攒粉丝、攒曝光。</p></div>
 <div class="card"><a href="https://www.giffgaff.com/" target="_blank" rel="noopener">giffgaff</a><p>海外 eSIM 保号：最便宜套餐 £6/月，纯保号约 £0.60/年。</p></div>
 
+<h2>🧾 这两天推特上的免费任务（只列做成的）</h2>
+<p class="sub">短剧、小说、视频那些没放。没做成的也不列。</p>
+
+<div class="card"><b>Gemini 4 免费接口</b><span class="status done">已做成</span><p>干什么：拿一个免费的 Gemini 4 Hydrogen 接口 Key，能免费用 AI。结果：Key 已创建并测试通过，每分钟 5 次、每天 20 次、每分钟 25 万 token。帖子说的 15 次/分钟、1500 次/天是夸大的。</p></div>
+
+<div class="card"><b>Parallel 免费搜索工具</b><span class="status done">已做成</span><p>干什么：装一个免费的联网搜索工具，不用账号、不用 Key，就能查资料。结果：已装好并验证通过，免费版人多的时候会限流，等半小时就好。</p></div>
+
+<div class="card"><b>GitHub 云电脑 + 临时 VPN</b><span class="status done">已做成（临时的）</span><p>干什么：用 GitHub 免费的云电脑搭一个临时 VPN 节点，手机能用。结果：节点已搭好，iPhone 上测试能正常上网，出口在美国。限制：免费额度每月 120 核时，这台 4 核机子约能用 30 小时，闲置 30 分钟会休眠。</p></div>
+
+<div class="card"><b>Telegram 免费搜索机器人</b><span class="status done">已做成</span><p>干什么：用 Telegram 上的搜索机器人找免费羊毛。结果：已登录 Telegram，两个机器人都试过，极搜比 SO 搜索好用，只能看标题列表。</p></div>
+
+<div class="card"><b>AgentScope 免费容器</b><span class="status wait">卡在审核</span><p>干什么：领一个免费 2 核 4G 的云容器，首次部署送 200 积分。结果：账号已注册，GitHub 已绑定，部署时被平台拦下，说要人工审核。卡在哪：审核已提交，等 1-3 个工作日邮件通知，通过后才能部署。</p></div>
+
+<div class="card"><b>Telnyx 免费 $25 额度</b><span class="status doing">正在试</span><p>干什么：注册免绑卡拿 $25 AI 额度，升级后换成 $5 通用额度打电话发短信，还送一个美国号码。结果：官网帮助里确实有这个说法，但另一篇官方文章又说目前没有免费试用额度，互相矛盾。卡在哪：正在注册验证，以后台实际显示的额度为准。</p></div>
+
+<div class="card"><b>Abasthan 免费主机</b><span class="status done">已做成</span><p>干什么：领一个 $0/月的免费云主机。结果：账号已注册并验证，余额 $0，没绑卡，本页就跑在这里。限制：512MB、0.1 核，官网没说永久免费、也没说会不会休眠；条款明确禁止建 VPN。</p></div>
+
+<div class="card"><b>AI 漫剧 21 套模板</b><span class="status done">已核实</span><p>干什么：核实 GitHub 上一个 21 套题材的 AI 漫剧模板仓库是不是真的。结果：仓库真实存在，840 颗星，21 套模板都对得上。限制：不是一键自动出 30 集，要配合 AI 一批一批写；只支持 Claude Code，没提 Codex；只有修仙那套是实测过的。</p></div>
+
+<div class="card"><b>Qoder / InstaBox / Perch AI</b><span class="status wait">已核实，还没领</span><p>干什么：核实几个还能领的免费额度。结果：Qoder 每天 100 积分（只能在软件里用）、InstaBox 免费 4 核 8G（闲置 30 分钟暂停，最长 8 小时）、Perch AI 约 $20/月价值（没有接口）。卡在哪：你还没说要领，所以都没注册。</p></div>
+
 <h2>📝 提醒</h2>
 <div class="card"><p>Oracle Cloud 11 月 19 日再重试注册，用工行环球旅行白金卡。Abasthan 不能建 VPN，Codespace 节点是临时的。</p></div>
 
 <footer>最后更新：2026-11-16 · 免费档 0.1 核很弱，只适合放这种轻量页面</footer>
+</div>
+
+<script>
+const HASH="40f96a3f47efe6e74c633aebcc14f3bf8ddab2a13c94e7e0dcbc82caf22f5a40";
+async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function login(){
+  const u=document.getElementById("u").value.trim();
+  const p=document.getElementById("p").value;
+  if(u!=="liuzhangdehao@gmail.com"){document.getElementById("err").textContent="账号不对";return}
+  if(await sha(p)!==HASH){document.getElementById("err").textContent="密码不对";return}
+  sessionStorage.setItem("nav_ok","1");
+  document.getElementById("gate").style.display="none";
+  document.getElementById("main").style.display="block";
+}
+if(sessionStorage.getItem("nav_ok")==="1"){document.getElementById("gate").style.display="none";document.getElementById("main").style.display="block"}
+document.getElementById("p").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+</script>
 </body>
 </html>
